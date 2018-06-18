@@ -3,7 +3,9 @@ using System.Windows.Forms;
 using Unity;
 using Unity.Lifetime;
 using SystemSecurityService.Interfaces;
-using SystemSecurityService.ServicesList;
+using System.Data.Entity;
+using SystemSecurityService.BDImplementation;
+using SystemSecurityService;
 
 namespace SystemSecurityView
 {
@@ -24,12 +26,13 @@ namespace SystemSecurityView
         public static IUnityContainer BuildUnityContainer()
         {
             var currentContainer = new UnityContainer();
-            currentContainer.RegisterType<ICustomer, CustomerList>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<IElement, ElementList>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<IExecutor, ExecutorList>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<ISystemm, SystemmList>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<IStorage, StorageList>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<IMainService, MainList>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<DbContext, SystemSecurityDBContext>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<ICustomer, CustomerBD>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IElement, ElementBD>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IExecutor, ExecutorBD>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<ISystemm, SystemmBD>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IStorage, StorageBD>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<IMainService, MainBD>(new HierarchicalLifetimeManager());
 
             return currentContainer;
         }
