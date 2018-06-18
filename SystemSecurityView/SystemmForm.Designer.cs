@@ -47,37 +47,33 @@
             // Name
             // 
             this.Name.AutoSize = true;
-            this.Name.Location = new System.Drawing.Point(18, 14);
-            this.Name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Name.Location = new System.Drawing.Point(12, 9);
             this.Name.Name = "Name";
-            this.Name.Size = new System.Drawing.Size(83, 20);
+            this.Name.Size = new System.Drawing.Size(57, 13);
             this.Name.TabIndex = 0;
             this.Name.Text = "Название";
             // 
             // Price
             // 
             this.Price.AutoSize = true;
-            this.Price.Location = new System.Drawing.Point(18, 57);
-            this.Price.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Price.Location = new System.Drawing.Point(12, 37);
             this.Price.Name = "Price";
-            this.Price.Size = new System.Drawing.Size(48, 20);
+            this.Price.Size = new System.Drawing.Size(33, 13);
             this.Price.TabIndex = 2;
             this.Price.Text = "Цена";
             // 
             // NameTextBox
             // 
-            this.NameTextBox.Location = new System.Drawing.Point(112, 9);
-            this.NameTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.NameTextBox.Location = new System.Drawing.Point(75, 6);
             this.NameTextBox.Name = "NameTextBox";
-            this.NameTextBox.Size = new System.Drawing.Size(294, 26);
+            this.NameTextBox.Size = new System.Drawing.Size(197, 20);
             this.NameTextBox.TabIndex = 3;
             // 
             // PriceTextBox
             // 
-            this.PriceTextBox.Location = new System.Drawing.Point(112, 52);
-            this.PriceTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.PriceTextBox.Location = new System.Drawing.Point(75, 34);
             this.PriceTextBox.Name = "PriceTextBox";
-            this.PriceTextBox.Size = new System.Drawing.Size(148, 26);
+            this.PriceTextBox.Size = new System.Drawing.Size(100, 20);
             this.PriceTextBox.TabIndex = 4;
             // 
             // groupBox1
@@ -87,21 +83,18 @@
             this.groupBox1.Controls.Add(this.Change);
             this.groupBox1.Controls.Add(this.Add);
             this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Location = new System.Drawing.Point(18, 92);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox1.Location = new System.Drawing.Point(12, 60);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(626, 385);
+            this.groupBox1.Size = new System.Drawing.Size(417, 250);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Компоненты";
             // 
             // Update
             // 
-            this.Update.Location = new System.Drawing.Point(504, 163);
-            this.Update.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Update.Location = new System.Drawing.Point(336, 106);
             this.Update.Name = "Update";
-            this.Update.Size = new System.Drawing.Size(112, 35);
+            this.Update.Size = new System.Drawing.Size(75, 23);
             this.Update.TabIndex = 4;
             this.Update.Text = "Обновить";
             this.Update.UseVisualStyleBackColor = true;
@@ -109,10 +102,9 @@
             // 
             // Delete
             // 
-            this.Delete.Location = new System.Drawing.Point(504, 118);
-            this.Delete.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Delete.Location = new System.Drawing.Point(336, 77);
             this.Delete.Name = "Delete";
-            this.Delete.Size = new System.Drawing.Size(112, 35);
+            this.Delete.Size = new System.Drawing.Size(75, 23);
             this.Delete.TabIndex = 3;
             this.Delete.Text = "Удалить";
             this.Delete.UseVisualStyleBackColor = true;
@@ -120,10 +112,9 @@
             // 
             // Change
             // 
-            this.Change.Location = new System.Drawing.Point(504, 74);
-            this.Change.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Change.Location = new System.Drawing.Point(336, 48);
             this.Change.Name = "Change";
-            this.Change.Size = new System.Drawing.Size(112, 35);
+            this.Change.Size = new System.Drawing.Size(75, 23);
             this.Change.TabIndex = 2;
             this.Change.Text = "Изменить";
             this.Change.UseVisualStyleBackColor = true;
@@ -131,10 +122,9 @@
             // 
             // Add
             // 
-            this.Add.Location = new System.Drawing.Point(504, 29);
-            this.Add.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Add.Location = new System.Drawing.Point(336, 19);
             this.Add.Name = "Add";
-            this.Add.Size = new System.Drawing.Size(112, 35);
+            this.Add.Size = new System.Drawing.Size(75, 23);
             this.Add.TabIndex = 1;
             this.Add.Text = "Добавить";
             this.Add.UseVisualStyleBackColor = true;
@@ -146,18 +136,16 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Left;
             this.dataGridView1.GridColor = System.Drawing.Color.White;
-            this.dataGridView1.Location = new System.Drawing.Point(4, 24);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridView1.Location = new System.Drawing.Point(3, 16);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(490, 356);
+            this.dataGridView1.Size = new System.Drawing.Size(327, 231);
             this.dataGridView1.TabIndex = 0;
             // 
             // Save
             // 
-            this.Save.Location = new System.Drawing.Point(410, 486);
-            this.Save.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Save.Location = new System.Drawing.Point(273, 316);
             this.Save.Name = "Save";
-            this.Save.Size = new System.Drawing.Size(112, 35);
+            this.Save.Size = new System.Drawing.Size(75, 23);
             this.Save.TabIndex = 5;
             this.Save.Text = "Сохранить";
             this.Save.UseVisualStyleBackColor = true;
@@ -165,10 +153,9 @@
             // 
             // Cancel
             // 
-            this.Cancel.Location = new System.Drawing.Point(531, 486);
-            this.Cancel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Cancel.Location = new System.Drawing.Point(354, 316);
             this.Cancel.Name = "Cancel";
-            this.Cancel.Size = new System.Drawing.Size(112, 35);
+            this.Cancel.Size = new System.Drawing.Size(75, 23);
             this.Cancel.TabIndex = 6;
             this.Cancel.Text = "Отмена";
             this.Cancel.UseVisualStyleBackColor = true;
@@ -176,9 +163,9 @@
             // 
             // SystemmForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(662, 540);
+            this.ClientSize = new System.Drawing.Size(441, 351);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.Save);
             this.Controls.Add(this.groupBox1);
@@ -186,8 +173,6 @@
             this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.Price);
             this.Controls.Add(this.Name);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "SystemmForm";
             this.Text = "SystemmForm";
             this.Load += new System.EventHandler(this.ProductForm_Load);
             this.groupBox1.ResumeLayout(false);

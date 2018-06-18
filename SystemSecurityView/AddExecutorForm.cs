@@ -1,28 +1,21 @@
 ﻿using SystemSecurityService.BindingModels;
-using SystemSecurityService.Interfaces;
 using SystemSecurityService.ViewModel;
 using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using Unity;
-using Unity.Attributes;
 
 namespace SystemSecurityView
 {
     public partial class AddExecutorForm : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-
         public int ID { set { id = value; } }
-
-        private readonly IExecutor service;
 
         private int? id;
 
-        public AddExecutorForm(IExecutor service)
+        public AddExecutorForm()
         {
             InitializeComponent();
-            this.service = service;
         }
 
         private void AddExecutorForm_Load(object sender, EventArgs e)
@@ -31,10 +24,18 @@ namespace SystemSecurityView
             {
                 try
                 {
-                    ExecutorViewModel view = service.GetElement(id.Value);
-                    if (view != null)
+                    var response = APIClient.GetRequest("api/Executor/Get/" + id.Value);
+                    if (response.Result.IsSuccessStatusCode)
                     {
-                        FIOTextBox.Text = view.ExecutorFIO;
+                        ExecutorViewModel view = APIClient.GetElement<ExecutorViewModel>(response);
+                        if (view != null)
+                        {
+                            FIOTextBox.Text = view.ExecutorFIO;
+                        }
+                    }
+                    else
+                    {
+                        throw new Exception(APIClient.GetError(response));
                     }
                 }
                 catch (Exception ex)
@@ -53,9 +54,10 @@ namespace SystemSecurityView
             }
             try
             {
+                Task<HttpResponseMessage> response;
                 if (id.HasValue)
                 {
-                    service.UpdElement(new ExecutorBindModel
+                    response = APIClient.PostRequest("api/Executor/UpdElement", new ExecutorBindModel
                     {
                         ID = id.Value,
                         ExecutorFIO = FIOTextBox.Text
@@ -63,14 +65,21 @@ namespace SystemSecurityView
                 }
                 else
                 {
-                    service.AddElement(new ExecutorBindModel
+                    response = APIClient.PostRequest("api/Executor/UpdElement", new ExecutorBindModel
                     {
                         ExecutorFIO = FIOTextBox.Text
                     });
                 }
-                MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult = DialogResult.OK;
-                Close();
+                if (response.Result.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
+                else
+                {
+                    throw new Exception(APIClient.GetError(response));
+                }
             }
             catch (Exception ex)
             {
