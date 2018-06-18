@@ -174,7 +174,7 @@
             this.Controls.Add(this.Price);
             this.Controls.Add(this.Name);
             this.Text = "SystemmForm";
-            this.Load += new System.EventHandler(this.ProductForm_Load);
+            this.Load += new System.EventHandler(this.SystemmForm_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

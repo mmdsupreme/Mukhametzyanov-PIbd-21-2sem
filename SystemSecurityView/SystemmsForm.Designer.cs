@@ -102,7 +102,7 @@
             this.Name = "FormProducts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Изделия";
-            this.Load += new System.EventHandler(this.FormProducts_Load);
+            this.Load += new System.EventHandler(this.SystemmsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.ResumeLayout(false);
         }

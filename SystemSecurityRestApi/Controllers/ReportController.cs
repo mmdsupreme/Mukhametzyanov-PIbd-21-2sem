@@ -1,5 +1,5 @@
-﻿using BarService.BindingModels;
-using BarService.Interfaces;
+﻿using SystemSecurityService.BindingModels;
+using SystemSecurityService.Interfaces;
 using System;
 using System.Web.Http;
 

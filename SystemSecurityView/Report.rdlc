@@ -101,7 +101,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Коктейль</Value>
+                              <Value>Система</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
@@ -554,8 +554,6 @@
         <rd:DefaultName>Textbox6</rd:DefaultName>
         <Top>4.16264cm</Top>
         <Left>13.86887cm</Left>
-        <Top>4.09208cm</Top>
-        <Left>13.32493cm</Left>
         <Height>0.68792cm</Height>
         <Width>2.29274cm</Width>
         <ZIndex>4</ZIndex>
@@ -586,7 +584,7 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="SystemSecurityrServiceViewModel">
+    <DataSource Name="SystemSecurityServiceViewModel">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
@@ -627,7 +625,7 @@
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>SystemSecurityrService.ViewModel</rd:DataSetName>
+        <rd:DataSetName>SystemSecurityService.ViewModel</rd:DataSetName>
         <rd:TableName>CustomerOrderViewModel</rd:TableName>
         <rd:ObjectDataSourceType>SystemSecurityService.ViewModel.CustomerOrderViewModel, SystemSecurityService, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
