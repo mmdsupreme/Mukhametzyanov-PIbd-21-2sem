@@ -5,10 +5,9 @@ using System.Data.Entity;
 
 namespace SystemSecurityService
 {
-    [Table("SystemSecurityDatabase")]
     public class SystemSecurityDBContext : DbContext
     {
-        public SystemSecurityDBContext()
+        public SystemSecurityDBContext() : base("NewSystemSecurityDatabase")
         {
             Configuration.ProxyCreationEnabled = false;
             Configuration.LazyLoadingEnabled = false;
@@ -30,6 +29,8 @@ namespace SystemSecurityService
         public virtual DbSet<Storage> Storages { get; set; }
 
         public virtual DbSet<ElementStorage> ElementStorages { get; set; }
+
+        public virtual DbSet<MessageInfo> MessageInfos { get; set; }
 
         public override int SaveChanges()
         {

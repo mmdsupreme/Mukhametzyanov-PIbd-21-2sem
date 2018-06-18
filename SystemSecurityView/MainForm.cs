@@ -185,5 +185,11 @@ namespace SystemSecurityView
             var form = new CustomerOrdersForm();
             form.ShowDialog();
         }
+
+        private void письмаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = new MailForm();
+            form.ShowDialog();
+        }
     }
 }
