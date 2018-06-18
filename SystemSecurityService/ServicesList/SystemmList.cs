@@ -1,10 +1,10 @@
-﻿using System;
+﻿using SystemSecurityService.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using SystemSecurityModel;
 using SystemSecurityService.BindingModels;
-using SystemSecurityService.Interfaces;
 using SystemSecurityService.ViewModel;
+using SystemSecurityModel;
 
 namespace SystemSecurityService.ServicesList
 {

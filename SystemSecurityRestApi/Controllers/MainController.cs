@@ -1,4 +1,5 @@
-﻿using SystemSecurityService.BindingModels;
+﻿using AbstractShopRestApi.Services;
+using SystemSecurityService.BindingModels;
 using SystemSecurityService.Interfaces;
 using System;
 using System.Web.Http;
@@ -53,6 +54,18 @@ namespace NewRestApi.Controllers
         public void PutElementOnStorage(ElementStorageBindModel model)
         {
             _service.PutElementOnStorage(model);
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetInfo()
+        {
+            ReflectionService service = new ReflectionService();
+            var List = service.GetInfoByAssembly();
+            if(List == null)
+            {
+                InternalServerError(new Exception("Нет данных"));
+            }
+            return Ok(List);
         }
     }
 }
