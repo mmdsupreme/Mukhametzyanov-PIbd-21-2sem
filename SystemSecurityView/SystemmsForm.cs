@@ -30,7 +30,7 @@ namespace SystemSecurityView
         {
             try
             {
-                List< Systemm ViewModel > list = service.GetList();
+                List<SystemmViewModel> list = service.GetList();
                 if (list != null)
                 {
                     dataGridView.DataSource = list;
