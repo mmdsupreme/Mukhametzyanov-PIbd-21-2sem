@@ -6,7 +6,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-
 namespace SystemSecurityService.BDImplementation
 {
     public class CustomerBD : ICustomer
