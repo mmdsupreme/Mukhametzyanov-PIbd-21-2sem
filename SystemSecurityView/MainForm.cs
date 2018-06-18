@@ -1,4 +1,5 @@
-﻿using SystemSecurityService.Interfaces;
+﻿using SystemSecurityService.BindingModels;
+using SystemSecurityService.Interfaces;
 using SystemSecurityService.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -13,11 +14,14 @@ namespace SystemSecurityView
         [Dependency]
         public new IUnityContainer container { set; get; }
         private readonly IMainService service;
+        private readonly IReportService reportService;
 
-        public MainForm(IMainService service)
+        public MainForm(IMainService service, IReportService reportService)
         {
             InitializeComponent();
             this.service = service;
+            this.reportService = reportService;
+            LoadData();
         }
 
         private void LoadData()
@@ -49,7 +53,7 @@ namespace SystemSecurityView
 
         private void изделияToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = container.Resolve<SystemmsForm>();
+            var form = container.Resolve<SystemmForm>();
             form.ShowDialog();
         }
 
@@ -132,6 +136,41 @@ namespace SystemSecurityView
         private void UpdateList_Click(object sender, EventArgs e)
         {
             LoadData();
+        }
+
+        private void прайсИзделийToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog
+            {
+                Filter = "doc|*.doc|docx|*.docx"
+            };
+            if (sfd.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    reportService.SaveSystemmPrice(new ReportBindModel
+                    {
+                        FileName = sfd.FileName
+                    });
+                    MessageBox.Show("Выполнено", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void загруженностьСкладовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = container.Resolve<StorageLoadForm>();
+            form.ShowDialog();
+        }
+
+        private void заказыКлиентовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = container.Resolve<CustomerOrdersForm>();
+            form.ShowDialog();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
