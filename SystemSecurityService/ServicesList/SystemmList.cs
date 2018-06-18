@@ -22,7 +22,7 @@ namespace SystemSecurityService.ServicesList
             Systemm elem = source.Systemms.FirstOrDefault(Systemm => Systemm.SystemmName == model.SystemmName);
             if (elem != null)
             {
-                throw new Exception("Такой коктейль уже есть");
+                throw new Exception("Такая система уже есть");
             }
             int maxId = source.Systemms.Count > 0 ? source.Systemms.Max(Systemm => Systemm.ID) : 0;
             source.Systemms.Add(new Systemm

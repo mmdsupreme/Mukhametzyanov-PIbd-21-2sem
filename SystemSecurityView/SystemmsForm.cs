@@ -2,6 +2,7 @@
 using SystemSecurityService.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SystemSecurityView
@@ -13,7 +14,7 @@ namespace SystemSecurityView
             InitializeComponent();
         }
 
-        private void FormProducts_Load(object sender, EventArgs e)
+        private void SystemmsForm_Load(object sender, EventArgs e)
         {
             LoadData();
         }
@@ -22,24 +23,20 @@ namespace SystemSecurityView
         {
             try
             {
-                var response = APIClient.GetRequest("api/Systemm/GetList");
-                if (response.Result.IsSuccessStatusCode)
+                List<SystemmViewModel> list = Task.Run(() => APIClient.GetRequestData<List<SystemmViewModel>>("api/Systemm/GetList")).Result;
+                if (list != null)
                 {
-                    List<SystemmViewModel> list = APIClient.GetElement<List<SystemmViewModel>>(response);
-                    if (list != null)
-                    {
-                        dataGridView.DataSource = list;
-                        dataGridView.Columns[0].Visible = false;
-                        dataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-                    }
-                }
-                else
-                {
-                    throw new Exception(APIClient.GetError(response));
+                    dataGridView.DataSource = list;
+                    dataGridView.Columns[0].Visible = false;
+                    dataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 }
             }
             catch (Exception ex)
             {
+                while (ex.InnerException != null)
+                {
+                    ex = ex.InnerException;
+                }
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -47,10 +44,7 @@ namespace SystemSecurityView
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             var form = new SystemmForm();
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                LoadData();
-            }
+            form.ShowDialog();
         }
 
         private void buttonUpd_Click(object sender, EventArgs e)
@@ -59,10 +53,7 @@ namespace SystemSecurityView
             {
                 var form = new SystemmForm();
                 form.ID = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
-                if (form.ShowDialog() == DialogResult.OK)
-                {
-                    LoadData();
-                }
+                form.ShowDialog();
             }
         }
 
@@ -73,19 +64,18 @@ namespace SystemSecurityView
                 if (MessageBox.Show("Удалить запись", "Вопрос", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     int id = Convert.ToInt32(dataGridView.SelectedRows[0].Cells[0].Value);
-                    try
+                    Task task = Task.Run(() => APIClient.PostRequestData("api/Systemm/DelElement", new CustomerBindModel { ID = id }));
+                    task.ContinueWith((prevTask) => MessageBox.Show("Запись удалена. Обновите список", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information),
+                    TaskContinuationOptions.OnlyOnRanToCompletion);
+                    task.ContinueWith((prevTask) =>
                     {
-                        var response = APIClient.PostRequest("api/Systemm/DelElement", new CustomerBindModel { ID = id });
-                        if (!response.Result.IsSuccessStatusCode)
+                        var ex = (Exception)prevTask.Exception;
+                        while (ex.InnerException != null)
                         {
-                            throw new Exception(APIClient.GetError(response));
+                            ex = ex.InnerException;
                         }
-                    }
-                    catch (Exception ex)
-                    {
                         MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    LoadData();
+                    }, TaskContinuationOptions.OnlyOnFaulted);
                 }
             }
         }
