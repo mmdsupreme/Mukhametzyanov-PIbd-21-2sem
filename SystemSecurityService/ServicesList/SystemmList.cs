@@ -112,7 +112,7 @@ namespace SystemSecurityService.ServicesList
             Systemm element = source.Systemms.FirstOrDefault(Systemm => Systemm.SystemmName == model.SystemmName && Systemm.ID != model.ID);
             if (element != null)
             {
-                throw new Exception("Такой коктейль уже есть");
+                throw new Exception("Такая система уже есть");
             }
             element = source.Systemms.FirstOrDefault(Systemm => Systemm.ID == model.ID);
             if (element == null)
