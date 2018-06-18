@@ -12,7 +12,7 @@ namespace SystemSecurityService.Migrations
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
-                        SystemmName = c.String(nullable: false),
+                    SystemmName = c.String(nullable: false),
                         Price = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })
                 .PrimaryKey(t => t.ID);
@@ -22,7 +22,7 @@ namespace SystemSecurityService.Migrations
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
-                        SystemmID = c.Int(nullable: false),
+                    SystemmID = c.Int(nullable: false),
                         ElementID = c.Int(nullable: false),
                         Count = c.Int(nullable: false),
                     })

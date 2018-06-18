@@ -3,25 +3,21 @@ using SystemSecurityService.Interfaces;
 using SystemSecurityService.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using Unity;
-using Unity.Attributes;
 
 namespace SystemSecurityView
 {
     public partial class SystemmForm : Form
     {
-        [Dependency]
-        public new IUnityContainer container { set; get; }
         public int ID { set { id = value; } }
         private int? id;
-        private readonly ISystemm service;
         private List<ElementRequirementsViewModel> productElems;
 
-        public SystemmForm(ISystemm service)
+        public SystemmForm()
         {
             InitializeComponent();
-            this.service = service;
         }
 
         private void ProductForm_Load(object sender, EventArgs e)
@@ -30,13 +26,18 @@ namespace SystemSecurityView
             {
                 try
                 {
-                    SystemmViewModel view = service.GetElement(id.Value);
-                    if (view != null)
+                    var response = APIClient.GetRequest("api/Systemm/Get/" + id.Value);
+                    if (response.Result.IsSuccessStatusCode)
                     {
-                        Name.Text = view.SystemmName;
-                        Price.Text = view.Price.ToString();
-                        productElems = view.ElementRequirements;
+                        var product = APIClient.GetElement<SystemmViewModel>(response);
+                        Name.Text = product.SystemmName;
+                        Price.Text = product.Price.ToString();
+                        productElems = product.ElementRequirements;
                         LoadData();
+                    }
+                    else
+                    {
+                        throw new Exception(APIClient.GetError(response));
                     }
                 }
                 catch (Exception ex)
@@ -72,7 +73,7 @@ namespace SystemSecurityView
 
         private void Add_Click(object sender, EventArgs e)
         {
-            var form = container.Resolve<AddElementForm>();
+            var form = new AddElementForm();
             if (form.ShowDialog() == DialogResult.OK)
             {
                 if (form.Model != null)
@@ -91,7 +92,7 @@ namespace SystemSecurityView
         {
             if (dataGridView1.SelectedRows.Count == 1)
             {
-                var form = container.Resolve<AddElementForm>();
+                var form = new AddElementForm();
                 form.Model = productElems[dataGridView1.SelectedRows[0].Cells[0].RowIndex];
                 if (form.ShowDialog() == DialogResult.OK)
                 {
@@ -155,9 +156,10 @@ namespace SystemSecurityView
                         Count = productElems[i].Count
                     });
                 }
+                Task<HttpResponseMessage> response;
                 if (id.HasValue)
                 {
-                    service.UpdElement(new SystemmBindModel
+                    response = APIClient.PostRequest("api/Systemm/UpdElement", new SystemmBindModel
                     {
                         ID = id.Value,
                         SystemmName = NameTextBox.Text,
@@ -167,16 +169,23 @@ namespace SystemSecurityView
                 }
                 else
                 {
-                    service.AddElement(new SystemmBindModel
+                    response = APIClient.PostRequest("api/Systemm/UpdElement", new SystemmBindModel
                     {
                         SystemmName = NameTextBox.Text,
                         Price = Convert.ToInt32(PriceTextBox.Text),
                         ElementRequirements = productComponentBM
                     });
                 }
-                MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult = DialogResult.OK;
-                Close();
+                if (response.Result.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
+                else
+                {
+                    throw new Exception(APIClient.GetError(response));
+                }
             }
             catch (Exception ex)
             {

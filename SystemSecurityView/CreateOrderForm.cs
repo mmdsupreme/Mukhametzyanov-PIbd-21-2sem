@@ -1,52 +1,53 @@
 ﻿using SystemSecurityService.BindingModels;
-using SystemSecurityService.Interfaces;
 using SystemSecurityService.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Unity;
-using Unity.Attributes;
 
 namespace SystemSecurityView
 {
     public partial class CreateOrderForm : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
-
-        private readonly ICustomer serviceC;
-
-        private readonly ISystemm serviceP;
-
-        private readonly IMainService serviceM;
-
-        public CreateOrderForm(ICustomer serviceC, ISystemm serviceP, IMainService serviceM)
+        public CreateOrderForm()
         {
             InitializeComponent();
-            this.serviceC = serviceC;
-            this.serviceP = serviceP;
-            this.serviceM = serviceM;
         }
 
         private void CreateOrderForm_Load(object sender, EventArgs e)
         {
             try
             {
-                List<CustomerViewModel> listC = serviceC.GetList();
-                if (listC != null)
+                var responseC = APIClient.GetRequest("api/Customer/GetList");
+                if (responseC.Result.IsSuccessStatusCode)
                 {
-                    CustomerCB.DisplayMember = "CustomerFIO";
-                    CustomerCB.ValueMember = "ID";
-                    CustomerCB.DataSource = listC;
-                    CustomerCB.SelectedItem = null;
+                    List<CustomerViewModel> list = APIClient.GetElement<List<CustomerViewModel>>(responseC);
+                    if (list != null)
+                    {
+                        CustomerCB.DisplayMember = "CustomerFIO";
+                        CustomerCB.ValueMember = "ID";
+                        CustomerCB.DataSource = list;
+                        CustomerCB.SelectedItem = null;
+                    }
                 }
-                List<SystemmViewModel> listP = serviceP.GetList();
-                if (listP != null)
+                else
                 {
-                    SystemmCB.DisplayMember = "SystemmName";
-                    SystemmCB.ValueMember = "ID";
-                    SystemmCB.DataSource = listP;
-                    SystemmCB.SelectedItem = null;
+                    throw new Exception(APIClient.GetError(responseC));
+                }
+                var responseP = APIClient.GetRequest("api/Systemm/GetList");
+                if (responseP.Result.IsSuccessStatusCode)
+                {
+                    List<SystemmViewModel> list = APIClient.GetElement<List<SystemmViewModel>>(responseP);
+                    if (list != null)
+                    {
+                        SystemmCB.DisplayMember = "SystemmName";
+                        SystemmCB.ValueMember = "ID";
+                        SystemmCB.DataSource = list;
+                        SystemmCB.SelectedItem = null;
+                    }
+                }
+                else
+                {
+                    throw new Exception(APIClient.GetError(responseP));
                 }
             }
             catch (Exception ex)
@@ -62,9 +63,17 @@ namespace SystemSecurityView
                 try
                 {
                     int id = Convert.ToInt32(SystemmCB.SelectedValue);
-                    SystemmViewModel product = serviceP.GetElement(id);
-                    int count = Convert.ToInt32(CountTB.Text);
-                    SumTB.Text = (count * product.Price).ToString();
+                    var responseP = APIClient.GetRequest("api/Systemm/Get/" + id);
+                    if (responseP.Result.IsSuccessStatusCode)
+                    {
+                        SystemmViewModel product = APIClient.GetElement<SystemmViewModel>(responseP);
+                        int count = Convert.ToInt32(CountTB.Text);
+                        SumTB.Text = (count * (int)product.Price).ToString();
+                    }
+                    else
+                    {
+                        throw new Exception(APIClient.GetError(responseP));
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -92,16 +101,22 @@ namespace SystemSecurityView
             }
             try
             {
-                serviceM.CreateOrder(new OrderBindModel
+                var response = APIClient.PostRequest("api/Main/CreateOrder", new OrderBindModel
                 {
                     CustomerID = Convert.ToInt32(CustomerCB.SelectedValue),
                     SystemmID = Convert.ToInt32(SystemmCB.SelectedValue),
                     Count = Convert.ToInt32(CountTB.Text),
                     Sum = Convert.ToInt32(SumTB.Text)
-                });
-                MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                DialogResult = DialogResult.OK;
-                Close();
+                }); if (response.Result.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
+                else
+                {
+                    throw new Exception(APIClient.GetError(response));
+                }
             }
             catch (Exception ex)
             {

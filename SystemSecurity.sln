@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27703.2000
+VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemSecurityModel", "BarModel\SystemSecurityModel.csproj", "{4017C3B2-4A3E-434C-BE10-DDDB9B7E1D1F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemSecurityService", "BarService\SystemSecurityService.csproj", "{57084DB3-EE23-4CB2-97AF-A0FA54F58B6A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemSecurityView", "BarView\SystemSecurityView.csproj", "{81885DDE-D447-4D83-974D-7DA37EAF4B71}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SystemSecurityRestApi", "BarRestApi\SystemSecurityRestApi.csproj", "{A24411B7-014C-4D22-B01D-6D0451F173C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,11 +29,15 @@ Global
 		{81885DDE-D447-4D83-974D-7DA37EAF4B71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81885DDE-D447-4D83-974D-7DA37EAF4B71}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81885DDE-D447-4D83-974D-7DA37EAF4B71}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A24411B7-014C-4D22-B01D-6D0451F173C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A24411B7-014C-4D22-B01D-6D0451F173C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A24411B7-014C-4D22-B01D-6D0451F173C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A24411B7-014C-4D22-B01D-6D0451F173C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8725A48D-8345-44FB-9D4B-D9878AE8994E}
+		SolutionGuid = {6BACA073-C805-466B-80BE-A445AED9A760}
 	EndGlobalSection
 EndGlobal
