@@ -133,5 +133,10 @@ namespace SystemSecurityView
         {
             LoadData();
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

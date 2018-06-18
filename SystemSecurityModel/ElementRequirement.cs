@@ -6,5 +6,7 @@
         public int SystemmID { get; set; }
         public int ElementID { get; set; }
         public int Count { get; set; }
+        public virtual Systemm Systemm { set; get; }
+        public virtual Element Element { set; get; }
     }
 }
