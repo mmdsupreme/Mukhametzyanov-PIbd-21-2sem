@@ -157,17 +157,17 @@ namespace SystemSecurityView
                 task = Task.Run(() => APIClient.PostRequestData("api/Systemm/UpdElement", new SystemmBindModel
                 {
                     ID = id.Value,
-                    SystemmName = NameTextBox.Text,
-                    Price = Convert.ToInt32(PriceTextBox.Text),
+                    SystemmName = name,
+                    Price = price,
                     ElementRequirements = productComponentBM
                 }));
             }
             else
             {
-                task = Task.Run(() => APIClient.PostRequestData("api/Systemm/UpdElement", new SystemmBindModel
+                task = Task.Run(() => APIClient.PostRequestData("api/Systemm/AddElement", new SystemmBindModel
                 {
-                    SystemmName = NameTextBox.Text,
-                    Price = Convert.ToInt32(PriceTextBox.Text),
+                    SystemmName = name,
+                    Price = price,
                     ElementRequirements = productComponentBM
                 }));
             }

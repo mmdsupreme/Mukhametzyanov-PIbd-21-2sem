@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+
 namespace SystemSecurityService.BDImplementation
 {
     public class CustomerBD : ICustomer
@@ -23,7 +24,8 @@ namespace SystemSecurityService.BDImplementation
                 .Select(rec => new CustomerViewModel
                 {
                     ID = rec.ID,
-                    CustomerFIO = rec.CustomerFIO
+                    CustomerFIO = rec.CustomerFIO,
+                    Mail = rec.Mail
                 })
                 .ToList();
             return result;
@@ -37,7 +39,18 @@ namespace SystemSecurityService.BDImplementation
                 return new CustomerViewModel
                 {
                     ID = element.ID,
-                    CustomerFIO = element.CustomerFIO
+                    CustomerFIO = element.CustomerFIO,
+                    Mail = element.Mail,
+                    Messages = context.MessageInfos
+                           .Where(recM => recM.CustomerID == element.ID)
+                            .Select(recM => new MessageInfoViewModel
+                            {
+                                MessageId = recM.MessageId,
+                                DateDelivery = recM.DateDelivery,
+                                Subject = recM.Subject,
+                                Body = recM.Body
+                            })
+                            .ToList()
                 };
             }
             throw new Exception("Элемент не найден");
@@ -52,7 +65,8 @@ namespace SystemSecurityService.BDImplementation
             }
             context.Customers.Add(new Customer
             {
-                CustomerFIO = model.CustomerFIO
+                CustomerFIO = model.CustomerFIO,
+                Mail = model.Mail
             });
             context.SaveChanges();
         }
@@ -71,6 +85,7 @@ namespace SystemSecurityService.BDImplementation
                 throw new Exception("Элемент не найден");
             }
             element.CustomerFIO = model.CustomerFIO;
+            element.Mail = model.Mail;
             context.SaveChanges();
         }
 

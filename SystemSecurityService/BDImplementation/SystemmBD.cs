@@ -131,7 +131,6 @@ namespace SystemSecurityService.BDImplementation
                     element.SystemmName = model.SystemmName;
                     element.Price = model.Price;
                     context.SaveChanges();
-
                     var compIDs = model.ElementRequirements.Select(rec => rec.ElementID).Distinct();
                     var updateElements = context.ElementRequirements
                                                     .Where(rec => rec.SystemmID == model.ID &&
