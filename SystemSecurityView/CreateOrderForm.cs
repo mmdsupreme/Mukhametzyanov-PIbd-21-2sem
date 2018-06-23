@@ -1,6 +1,6 @@
-﻿using SystemSecurityService.BindingModels;
-using SystemSecurityService.Interfaces;
-using SystemSecurityService.ViewModel;
+﻿using BarService.BindingModels;
+using BarService.Interfaces;
+using BarService.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +13,7 @@ using System.Windows.Forms;
 using Unity;
 using Unity.Attributes;
 
-namespace SystemSecurityView
+namespace BarView
 {
     public partial class CreateOrderForm : Form
     {
@@ -22,11 +22,11 @@ namespace SystemSecurityView
 
         private readonly ICustomer serviceC;
 
-        private readonly ISystemm serviceP;
+        private readonly ICocktail serviceP;
 
         private readonly IMainService serviceM;
 
-        public CreateOrderForm(ICustomer serviceC, ISystemm serviceP, IMainService serviceM)
+        public CreateOrderForm(ICustomer serviceC, ICocktail serviceP, IMainService serviceM)
         {
             InitializeComponent();
             this.serviceC = serviceC;
@@ -46,13 +46,13 @@ namespace SystemSecurityView
                     CustomerCB.DataSource = listC;
                     CustomerCB.SelectedItem = null;
                 }
-                List<SystemmViewModel> listP = serviceP.GetList();
+                List<CocktailViewModel> listP = serviceP.GetList();
                 if (listP != null)
                 {
-                    SystemmCB.DisplayMember = "SystemmName";
-                    SystemmCB.ValueMember = "ID";
-                    SystemmCB.DataSource = listP;
-                    SystemmCB.SelectedItem = null;
+                    CocktailCB.DisplayMember = "CocktailName";
+                    CocktailCB.ValueMember = "ID";
+                    CocktailCB.DataSource = listP;
+                    CocktailCB.SelectedItem = null;
                 }
             }
             catch (Exception ex)
@@ -63,12 +63,12 @@ namespace SystemSecurityView
 
         private void Calculate()
         {
-            if (SystemmCB.SelectedValue != null && !string.IsNullOrEmpty(CountTB.Text))
+            if (CocktailCB.SelectedValue != null && !string.IsNullOrEmpty(CountTB.Text))
             {
                 try
                 {
-                    int id = Convert.ToInt32(SystemmCB.SelectedValue);
-                    SystemmViewModel product = serviceP.GetElement(id);
+                    int id = Convert.ToInt32(CocktailCB.SelectedValue);
+                    CocktailViewModel product = serviceP.GetElement(id);
                     int count = Convert.ToInt32(CountTB.Text);
                     SumTB.Text = (count * product.Price).ToString();
                 }
@@ -91,7 +91,7 @@ namespace SystemSecurityView
                 MessageBox.Show("Выберите клиента", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (SystemmCB.SelectedValue == null)
+            if (CocktailCB.SelectedValue == null)
             {
                 MessageBox.Show("Выберите изделие", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -101,7 +101,7 @@ namespace SystemSecurityView
                 serviceM.CreateOrder(new OrderBindModel
                 {
                     CustomerID = Convert.ToInt32(CustomerCB.SelectedValue),
-                    SystemmID = Convert.ToInt32(SystemmCB.SelectedValue),
+                    CocktailID = Convert.ToInt32(CocktailCB.SelectedValue),
                     Count = Convert.ToInt32(CountTB.Text),
                     Sum = Convert.ToInt32(SumTB.Text)
                 });
@@ -126,7 +126,7 @@ namespace SystemSecurityView
             Calculate();
         }
 
-        private void SystemmCB_SelectedIndexChanged(object sender, EventArgs e)
+        private void CocktailCB_SelectedIndexChanged(object sender, EventArgs e)
         {
             Calculate();
         }

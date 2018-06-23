@@ -2,10 +2,10 @@
 using System.Windows.Forms;
 using Unity;
 using Unity.Lifetime;
-using SystemSecurityService.Interfaces;
-using SystemSecurityService.ServicesList;
+using BarService.Interfaces;
+using BarService.ServicesList;
 
-namespace SystemSecurityView
+namespace BarView
 {
     static class Program
     {
@@ -27,7 +27,7 @@ namespace SystemSecurityView
             currentContainer.RegisterType<ICustomer, CustomerList>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IElement, ElementList>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IExecutor, ExecutorList>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<ISystemm, SystemmList>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<ICocktail, CocktailList>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IStorage, StorageList>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IMainService, MainList>(new HierarchicalLifetimeManager());
 

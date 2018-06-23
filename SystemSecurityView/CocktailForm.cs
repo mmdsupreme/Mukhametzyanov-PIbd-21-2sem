@@ -1,6 +1,6 @@
-﻿using SystemSecurityService.BindingModels;
-using SystemSecurityService.Interfaces;
-using SystemSecurityService.ViewModel;
+﻿using BarService.BindingModels;
+using BarService.Interfaces;
+using BarService.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,18 +13,18 @@ using System.Windows.Forms;
 using Unity;
 using Unity.Attributes;
 
-namespace SystemSecurityView
+namespace BarView
 {
-    public partial class SystemmForm : Form
+    public partial class CocktailForm : Form
     {
         [Dependency]
         public new IUnityContainer container { set; get; }
         public int ID { set { id = value; } }
         private int? id;
-        private readonly ISystemm service;
+        private readonly ICocktail service;
         private List<ElementRequirementsViewModel> productElems;
 
-        public SystemmForm(ISystemm service)
+        public CocktailForm(ICocktail service)
         {
             InitializeComponent();
             this.service = service;
@@ -36,10 +36,10 @@ namespace SystemSecurityView
             {
                 try
                 {
-                    SystemmViewModel view = service.GetElement(id.Value);
+                    CocktailViewModel view = service.GetElement(id.Value);
                     if(view != null)
                     {
-                        Name.Text = view.SystemmName;
+                        Name.Text = view.CocktailName;
                         Price.Text = view.Price.ToString();
                         productElems = view.ElementRequirements;
                         LoadData();
@@ -85,7 +85,7 @@ namespace SystemSecurityView
                 {
                     if (id.HasValue)
                     {
-                        form.Model.SystemmID = id.Value;
+                        form.Model.CocktailID = id.Value;
                     }
                     productElems.Add(form.Model);
                 }
@@ -156,26 +156,26 @@ namespace SystemSecurityView
                     productComponentBM.Add(new ElementRequirementsBindModel
                     {
                         ID = productElems[i].ID,
-                        SystemmID = productElems[i].SystemmID,
+                        CocktailID = productElems[i].CocktailID,
                         ElementID = productElems[i].ElementID,
                         Count = productElems[i].Count
                     });
                 }
                 if (id.HasValue)
                 {
-                    service.UpdElement(new SystemmBindModel
+                    service.UpdElement(new CocktailBindModel
                     {
                         ID = id.Value,
-                        SystemmName = NameTextBox.Text,
+                        CocktailName = NameTextBox.Text,
                         Price = Convert.ToInt32(PriceTextBox.Text),
                         ElementRequirements = productComponentBM
                     });
                 }
                 else
                 {
-                    service.AddElement(new SystemmBindModel
+                    service.AddElement(new CocktailBindModel
                     {
-                        SystemmName = NameTextBox.Text,
+                        CocktailName = NameTextBox.Text,
                         Price = Convert.ToInt32(PriceTextBox.Text),
                         ElementRequirements = productComponentBM
                     });

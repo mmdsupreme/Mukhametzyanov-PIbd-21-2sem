@@ -1,6 +1,6 @@
-﻿namespace SystemSecurityView
+﻿namespace BarView
 {
-    partial class SystemmForm
+    partial class CocktailForm
     {
         /// <summary>
         /// Required designer variable.
@@ -161,7 +161,7 @@
             this.Cancel.UseVisualStyleBackColor = true;
             this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
             // 
-            // SystemmForm
+            // CocktailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -173,7 +173,7 @@
             this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.Price);
             this.Controls.Add(this.Name);
-            this.Text = "SystemmForm";
+            this.Text = "CocktailForm";
             this.Load += new System.EventHandler(this.ProductForm_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

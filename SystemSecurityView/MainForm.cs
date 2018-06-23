@@ -1,12 +1,12 @@
-﻿using SystemSecurityService.Interfaces;
-using SystemSecurityService.ViewModel;
+﻿using BarService.Interfaces;
+using BarService.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Unity;
 using Unity.Attributes;
 
-namespace SystemSecurityView
+namespace BarView
 {
     public partial class MainForm : Form
     {
@@ -49,7 +49,7 @@ namespace SystemSecurityView
 
         private void изделияToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var form = container.Resolve<SystemmsForm>();
+            var form = container.Resolve<CocktailsForm>();
             form.ShowDialog();
         }
 

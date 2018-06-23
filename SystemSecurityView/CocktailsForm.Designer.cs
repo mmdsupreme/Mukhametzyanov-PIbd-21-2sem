@@ -1,6 +1,6 @@
-﻿namespace SystemSecurityView
+﻿namespace BarView
 {
-    partial class SystemmsForm
+    partial class CocktailsForm
     {
         /// <summary>
         /// Required designer variable.

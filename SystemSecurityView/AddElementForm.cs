@@ -1,5 +1,5 @@
-﻿using SystemSecurityService.Interfaces;
-using SystemSecurityService.ViewModel;
+﻿using BarService.Interfaces;
+using BarService.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,17 +12,17 @@ using System.Windows.Forms;
 using Unity;
 using Unity.Attributes;
 
-namespace SystemSecurityView
+namespace BarView
 {
     public partial class AddElementForm : Form
     {
         [Dependency]
         public new IUnityContainer container { set; get; }
-        private readonly SystemSecurityService.Interfaces.IElement service;
+        private readonly BarService.Interfaces.IElement service;
         private ElementRequirementsViewModel model;
         public ElementRequirementsViewModel Model { set { model = value; } get { return model; } }
 
-        public AddElementForm(SystemSecurityService.Interfaces.IElement service)
+        public AddElementForm(BarService.Interfaces.IElement service)
         {
             InitializeComponent();
             this.service = service;
