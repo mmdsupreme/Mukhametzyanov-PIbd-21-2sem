@@ -1,18 +1,11 @@
-﻿using SystemSecurityService.Interfaces;
-using SystemSecurityService.ViewModel;
+﻿using BarService.Interfaces;
+using BarService.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Unity;
 using Unity.Attributes;
 
-namespace SystemSecurityView
+namespace BarView
 {
     public partial class AddCustomerForm : Form
     {
@@ -62,7 +55,7 @@ namespace SystemSecurityView
             {
                 if (id.HasValue)
                 {
-                    service.UpdElement(new SystemSecurityService.BindingModels.CustomerBindModel
+                    service.UpdElement(new BarService.BindingModels.CustomerBindModel
                     {
                         ID = id.Value,
                         CustomerFIO = FIO.Text
@@ -70,7 +63,7 @@ namespace SystemSecurityView
                 }
                 else
                 {
-                    service.AddElement(new SystemSecurityService.BindingModels.CustomerBindModel
+                    service.AddElement(new BarService.BindingModels.CustomerBindModel
                     {
                         CustomerFIO = FIO.Text
                     });

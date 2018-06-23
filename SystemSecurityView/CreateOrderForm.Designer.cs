@@ -1,4 +1,4 @@
-﻿namespace SystemSecurityView
+﻿namespace BarView
 {
     partial class CreateOrderForm
     {
@@ -30,7 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.CustomerCB = new System.Windows.Forms.ComboBox();
-            this.SystemmCB = new System.Windows.Forms.ComboBox();
+            this.CocktailCB = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -57,14 +57,14 @@
             this.CustomerCB.Size = new System.Drawing.Size(219, 21);
             this.CustomerCB.TabIndex = 1;
             // 
-            // SystemmCB
+            // CocktailCB
             // 
-            this.SystemmCB.FormattingEnabled = true;
-            this.SystemmCB.Location = new System.Drawing.Point(86, 40);
-            this.SystemmCB.Name = "SystemmCB";
-            this.SystemmCB.Size = new System.Drawing.Size(219, 21);
-            this.SystemmCB.TabIndex = 3;
-            this.SystemmCB.SelectedIndexChanged += new System.EventHandler(this.SystemmCB_SelectedIndexChanged);
+            this.CocktailCB.FormattingEnabled = true;
+            this.CocktailCB.Location = new System.Drawing.Point(86, 40);
+            this.CocktailCB.Name = "CocktailCB";
+            this.CocktailCB.Size = new System.Drawing.Size(219, 21);
+            this.CocktailCB.TabIndex = 3;
+            this.CocktailCB.SelectedIndexChanged += new System.EventHandler(this.CocktailCB_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -73,7 +73,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Система";
+            this.label2.Text = "Коктейль";
             // 
             // label3
             // 
@@ -140,7 +140,7 @@
             this.Controls.Add(this.CountTB);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.SystemmCB);
+            this.Controls.Add(this.CocktailCB);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.CustomerCB);
             this.Controls.Add(this.label1);
@@ -156,7 +156,7 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox CustomerCB;
-        private System.Windows.Forms.ComboBox SystemmCB;
+        private System.Windows.Forms.ComboBox CocktailCB;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;

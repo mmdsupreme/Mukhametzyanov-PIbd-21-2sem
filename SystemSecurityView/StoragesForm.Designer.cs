@@ -1,4 +1,4 @@
-﻿namespace SystemSecurityView
+﻿namespace BarView
 {
     partial class StoragesForm
     {

@@ -1,5 +1,5 @@
-﻿using SystemSecurityService.Interfaces;
-using SystemSecurityService.ViewModel;
+﻿using BarService.Interfaces;
+using BarService.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using Unity;
 using Unity.Attributes;
 
-namespace SystemSecurityView
+namespace BarView
 {
     public partial class ExecutorsForm : Form
     {
