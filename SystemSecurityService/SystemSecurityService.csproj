@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SystemSecurityDBContext.cs" />
-    <Compile Include="BDImplementation\SystemmBD.cs" />
+    <Compile Include="BDImplementation\systemmBD.cs" />
     <Compile Include="BDImplementation\CustomerBD.cs" />
     <Compile Include="BDImplementation\ElementBD.cs" />
     <Compile Include="BDImplementation\ExecutorBD.cs" />
@@ -97,7 +97,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SystemSecurityModel\SystemSecurityModel.csproj">
+    <ProjectReference Include="..\BarModel\SystemSecurityModel.csproj">
       <Project>{4017c3b2-4a3e-434c-be10-dddb9b7e1d1f}</Project>
       <Name>SystemSecurityModel</Name>
     </ProjectReference>

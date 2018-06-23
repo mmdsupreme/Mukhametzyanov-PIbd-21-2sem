@@ -17,6 +17,11 @@ namespace SystemSecurityService.BDImplementation
             this.context = context;
         }
 
+        public StorageBD()
+        {
+            this.context = new SystemSecurityDBContext();
+        }
+
         public List<StorageViewModel> GetList()
         {
             List<StorageViewModel> result = context.Storages

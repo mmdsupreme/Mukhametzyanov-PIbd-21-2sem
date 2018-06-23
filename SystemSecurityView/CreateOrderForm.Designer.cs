@@ -43,86 +43,77 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 25);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(12, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 20);
+            this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Клиент";
             // 
             // CustomerCB
             // 
             this.CustomerCB.FormattingEnabled = true;
-            this.CustomerCB.Location = new System.Drawing.Point(129, 20);
-            this.CustomerCB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.CustomerCB.Location = new System.Drawing.Point(86, 13);
             this.CustomerCB.Name = "CustomerCB";
-            this.CustomerCB.Size = new System.Drawing.Size(326, 28);
+            this.CustomerCB.Size = new System.Drawing.Size(219, 21);
             this.CustomerCB.TabIndex = 1;
             // 
             // SystemmCB
             // 
             this.SystemmCB.FormattingEnabled = true;
-            this.SystemmCB.Location = new System.Drawing.Point(129, 62);
-            this.SystemmCB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.SystemmCB.Location = new System.Drawing.Point(86, 40);
             this.SystemmCB.Name = "SystemmCB";
-            this.SystemmCB.Size = new System.Drawing.Size(326, 28);
+            this.SystemmCB.Size = new System.Drawing.Size(219, 21);
             this.SystemmCB.TabIndex = 3;
             this.SystemmCB.SelectedIndexChanged += new System.EventHandler(this.SystemmCB_SelectedIndexChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 66);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(12, 43);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(75, 20);
+            this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Система";
+            this.label2.Text = "Коктейль";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(18, 108);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(12, 70);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(100, 20);
+            this.label3.Size = new System.Drawing.Size(66, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Количество";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 149);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(12, 97);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 20);
+            this.label4.Size = new System.Drawing.Size(41, 13);
             this.label4.TabIndex = 6;
             this.label4.Text = "Сумма";
             // 
             // CountTB
             // 
-            this.CountTB.Location = new System.Drawing.Point(129, 103);
-            this.CountTB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.CountTB.Location = new System.Drawing.Point(86, 67);
             this.CountTB.Name = "CountTB";
-            this.CountTB.Size = new System.Drawing.Size(326, 26);
+            this.CountTB.Size = new System.Drawing.Size(219, 20);
             this.CountTB.TabIndex = 7;
             this.CountTB.TextChanged += new System.EventHandler(this.CountTB_TextChanged);
             // 
             // SumTB
             // 
             this.SumTB.Enabled = false;
-            this.SumTB.Location = new System.Drawing.Point(129, 145);
-            this.SumTB.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.SumTB.Location = new System.Drawing.Point(86, 94);
             this.SumTB.Name = "SumTB";
-            this.SumTB.Size = new System.Drawing.Size(326, 26);
+            this.SumTB.Size = new System.Drawing.Size(219, 20);
             this.SumTB.TabIndex = 8;
             // 
             // CancelButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(308, 185);
-            this.CancelButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.CancelButton.Location = new System.Drawing.Point(205, 120);
             this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(150, 35);
+            this.CancelButton.Size = new System.Drawing.Size(100, 23);
             this.CancelButton.TabIndex = 10;
             this.CancelButton.Text = "Отмена";
             this.CancelButton.UseVisualStyleBackColor = true;
@@ -130,10 +121,9 @@
             // 
             // Save
             // 
-            this.Save.Location = new System.Drawing.Point(129, 185);
-            this.Save.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Save.Location = new System.Drawing.Point(86, 120);
             this.Save.Name = "Save";
-            this.Save.Size = new System.Drawing.Size(150, 35);
+            this.Save.Size = new System.Drawing.Size(100, 23);
             this.Save.TabIndex = 9;
             this.Save.Text = "Сохранить";
             this.Save.UseVisualStyleBackColor = true;
@@ -141,9 +131,9 @@
             // 
             // CreateOrderForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(476, 237);
+            this.ClientSize = new System.Drawing.Size(317, 154);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.Save);
             this.Controls.Add(this.SumTB);
@@ -154,7 +144,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.CustomerCB);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "CreateOrderForm";
             this.Text = "CreateOrderForm";
             this.Load += new System.EventHandler(this.CreateOrderForm_Load);

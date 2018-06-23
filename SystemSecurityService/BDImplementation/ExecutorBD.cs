@@ -17,6 +17,11 @@ namespace SystemSecurityService.BDImplementation
             this.context = context;
         }
 
+        public ExecutorBD()
+        {
+            this.context = new SystemSecurityDBContext();
+        }
+
         public List<ExecutorViewModel> GetList()
         {
             List<ExecutorViewModel> result = context.Executors

@@ -173,7 +173,7 @@
             this.Controls.Add(this.NameTextBox);
             this.Controls.Add(this.Price);
             this.Controls.Add(this.Name);
-            this.Text = "CocktailForm";
+            this.Text = "SystemmForm";
             this.Load += new System.EventHandler(this.ProductForm_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

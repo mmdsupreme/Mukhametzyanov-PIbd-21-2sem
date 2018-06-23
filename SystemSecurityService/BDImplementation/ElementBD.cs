@@ -17,6 +17,11 @@ namespace SystemSecurityService.BDImplementation
             this.context = context;
         }
 
+        public ElementBD()
+        {
+            this.context = new SystemSecurityDBContext();
+        }
+
         public List<ElementViewModel> GetList()
         {
             List<ElementViewModel> result = context.Elements
