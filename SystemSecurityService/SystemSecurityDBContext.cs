@@ -4,7 +4,7 @@ using System.Data.Entity;
 
 namespace SystemSecurityService
 {
-    [Table("SystemSecurityDatabase")]
+    [Table("SystemSecurityWebDatabase")]
     public class SystemSecurityDBContext : DbContext
     {
         public SystemSecurityDBContext()

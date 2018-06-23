@@ -19,6 +19,11 @@ namespace SystemSecurityService.BDImplementation
             this.context = context;
         }
 
+        public MainBD()
+        {
+            this.context = new SystemSecurityDBContext();
+        }
+
         public List<OrderViewModel> GetList()
         {
             List<OrderViewModel> result = context.Orders

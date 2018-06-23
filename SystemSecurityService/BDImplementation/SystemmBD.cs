@@ -8,13 +8,18 @@ using System.Linq;
 
 namespace SystemSecurityService.BDImplementation
 {
-    public class SystemmBD : ISystemm
+    public class systemmBD : ISystemm
     {
         private SystemSecurityDBContext context;
 
-        public SystemmBD(SystemSecurityDBContext context)
+        public systemmBD(SystemSecurityDBContext context)
         {
             this.context = context;
+        }
+
+        public systemmBD()
+        {
+            this.context = new SystemSecurityDBContext();
         }
 
         public List<SystemmViewModel> GetList()
@@ -106,7 +111,6 @@ namespace SystemSecurityService.BDImplementation
                 catch (Exception)
                 {
                     transaction.Rollback();
-                    throw;
                 }
             }
         }
@@ -180,7 +184,6 @@ namespace SystemSecurityService.BDImplementation
                 catch (Exception)
                 {
                     transaction.Rollback();
-                    throw;
                 }
             }
         }
@@ -208,7 +211,6 @@ namespace SystemSecurityService.BDImplementation
                 catch (Exception)
                 {
                     transaction.Rollback();
-                    throw;
                 }
             }
         }
